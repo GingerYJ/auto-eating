@@ -26,6 +26,10 @@ public class AutoEatProvider implements ICapabilitySerializable<NBTTagCompound> 
         this.instance = instance;
     }
 
+    public AutoEatData getInstance() {
+        return this.instance;
+    }
+
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         return capability == AUTO_EAT;

@@ -6,9 +6,7 @@
   "client": [
     "client.GuiInventoryMixin"
   ],
-  "mixins": [
-    "ContainerPlayerMixin"
-  ],
+  "mixins": [],
   "server": [],
   "setSourceFile": true,
   "minVersion": "0.8.7"

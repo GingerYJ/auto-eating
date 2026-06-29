@@ -3,6 +3,7 @@ package com.auto_eating;
 import com.auto_eating.capability.AutoEatData;
 import com.auto_eating.capability.AutoEatProvider;
 import com.auto_eating.capability.AutoEatStorage;
+import com.auto_eating.gui.AutoEatSlotManager;
 import com.auto_eating.gui.ContainerAutoEat;
 import com.auto_eating.gui.GuiAutoEat;
 import com.auto_eating.network.PacketOpenAutoEatGui;
@@ -18,6 +19,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -68,7 +70,18 @@ public class AutoEatingMod {
     @SubscribeEvent
     public void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof EntityPlayer) {
-            event.addCapability(AutoEatProvider.ID, new AutoEatProvider());
+            EntityPlayer player = (EntityPlayer) event.getObject();
+            AutoEatProvider provider = new AutoEatProvider();
+            event.addCapability(AutoEatProvider.ID, provider);
+            AutoEatSlotManager.install(player, provider.getInstance());
         }
+    }
+
+    @SubscribeEvent
+    public void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) return;
+
+        AutoEatData data = event.player.getCapability(AutoEatProvider.AUTO_EAT, null);
+        AutoEatSlotManager.install(event.player, data);
     }
 }
