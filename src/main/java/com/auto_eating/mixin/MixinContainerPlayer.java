@@ -11,6 +11,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -22,7 +23,6 @@ public abstract class MixinContainerPlayer extends Container {
     private void onInit(InventoryPlayer inv, boolean local, EntityPlayer player, CallbackInfo ci) {
         AutoEatData data = player.getCapability(AutoEatProvider.AUTO_EAT, null);
         if (data != null) {
-            // 3 food slots in a vertical column, clearly separated from armor (x=8)
             for (int i = 0; i < 3; i++) {
                 this.addSlotToContainer(new SlotAutoFood(
                     data.inventory, i, 77, 8 + i * 18));
@@ -30,7 +30,7 @@ public abstract class MixinContainerPlayer extends Container {
         }
     }
 
-    @Override
+    @Overwrite
     public ItemStack transferStackInSlot(EntityPlayer player, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
@@ -52,7 +52,7 @@ public abstract class MixinContainerPlayer extends Container {
 
             if (stack.getItem() instanceof ItemFood) {
                 if (!this.mergeItemStack(stack, 46, 49, false)) {
-                    // fall through
+                    // food slots full, fall through
                 } else {
                     if (stack.isEmpty()) {
                         slot.putStack(ItemStack.EMPTY);
@@ -92,7 +92,6 @@ public abstract class MixinContainerPlayer extends Container {
 
             slot.onTake(player, stack);
         }
-
         return itemstack;
     }
 }
