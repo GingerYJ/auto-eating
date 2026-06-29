@@ -1,1 +1,15 @@
-{"required":true,"package":"com.auto_eating.mixin","compatibilityLevel":"JAVA_8","target":"@env(DEFAULT)","client":[],"mixins":[],"server":[],"setSourceFile":true,"minVersion":"0.8.7"}
+{
+  "required": true,
+  "package": "com.auto_eating.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "client": [
+    "client.GuiInventoryMixin"
+  ],
+  "mixins": [
+    "ContainerPlayerMixin"
+  ],
+  "server": [],
+  "setSourceFile": true,
+  "minVersion": "0.8.7"
+}
