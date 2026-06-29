@@ -38,7 +38,7 @@ public class GuiEventHandler {
             // Remove old, add new
             event.getButtonList().removeIf(b -> b.id == TAB_ID);
             event.getButtonList().add(new AutoEatTabButton(
-                TAB_ID, guiLeft + 76, guiTop + 62));
+                TAB_ID, guiLeft + 136, guiTop + 62));
         }
     }
 
