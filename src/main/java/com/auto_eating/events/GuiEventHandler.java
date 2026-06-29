@@ -31,16 +31,11 @@ public class GuiEventHandler {
         GlStateManager.enableBlend();
         GlStateManager.color(1F, 1F, 1F, 1F);
 
-        mc.getTextureManager().bindTexture(SLOT_TEX);
-        for (Slot slot : gui.inventorySlots.inventorySlots) {
-            if (slot instanceof SlotAutoFood) {
-                Gui.drawModalRectWithCustomSizedTexture(slot.xPos - 1, slot.yPos - 1, 7, 17, 18, 18, 256, 256);
-            }
-        }
-
-        mc.getTextureManager().bindTexture(FOOD_SLOT_TEX);
         for (Slot slot : gui.inventorySlots.inventorySlots) {
             if (slot instanceof SlotAutoFood && !slot.getHasStack()) {
+                mc.getTextureManager().bindTexture(SLOT_TEX);
+                Gui.drawModalRectWithCustomSizedTexture(slot.xPos - 1, slot.yPos - 1, 7, 17, 18, 18, 256, 256);
+                mc.getTextureManager().bindTexture(FOOD_SLOT_TEX);
                 Gui.drawModalRectWithCustomSizedTexture(slot.xPos + 1, slot.yPos + 1, 0, 0, 16, 16, 16, 16);
             }
         }
