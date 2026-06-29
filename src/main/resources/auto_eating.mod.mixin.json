@@ -1,0 +1,1 @@
+{"required":false,"package":"com.auto_eating.mixin.mod","compatibilityLevel":"JAVA_8","target":"@env(DEFAULT)","client":[],"mixins":[],"server":[],"setSourceFile":true,"minVersion":"0.8.7"}

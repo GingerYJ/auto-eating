@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "auto_eating",
+    "name": "Auto Eating",
+    "description": "Automatically eat food from dedicated inventory slots to restore hunger.",
+    "version": "1.0.0",
+    "mcversion": "1.12.2",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["GingerYJ"],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

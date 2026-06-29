@@ -1,0 +1,1 @@
+{"required":true,"package":"com.auto_eating.mixin","compatibilityLevel":"JAVA_8","target":"@env(DEFAULT)","client":[],"mixins":["MixinContainerPlayer"],"server":["MixinContainerPlayer"],"setSourceFile":true,"minVersion":"0.8.7"}

@@ -1,0 +1,4 @@
+key.auto_eating.category=Auto Eating
+key.auto_eating.open_gui=Open Auto-Eat Inventory
+container.auto_eating.title=Auto-Eat Food Slots
+tooltip.auto_eating.food_slot=Place food here for automatic consumption
